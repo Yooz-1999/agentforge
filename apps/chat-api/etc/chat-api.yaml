@@ -1,0 +1,16 @@
+Name: chat-api
+Host: 0.0.0.0
+Port: 8889
+CoreRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: agentforge.core.rpc
+JWT:
+  Secret: change-me
+  AccessExpireSeconds: 7200
+  RefreshExpireSeconds: 2592000
+LLM:
+  OpenAI:
+    APIKey: sk-example
+    BaseURL: https://api.openai.com

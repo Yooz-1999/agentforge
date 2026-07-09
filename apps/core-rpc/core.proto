@@ -1,0 +1,204 @@
+syntax = "proto3";
+
+package core;
+
+option go_package = "./pb";
+
+message Empty {}
+
+message User {
+  int64 id = 1;
+  string email = 2;
+  string nickname = 3;
+  int64 status = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}
+
+message Agent {
+  int64 id = 1;
+  int64 user_id = 2;
+  string name = 3;
+  string description = 4;
+  string system_prompt = 5;
+  string model_provider = 6;
+  string model_name = 7;
+  double temperature = 8;
+  int64 max_tokens = 9;
+  int64 status = 10;
+  string created_at = 11;
+  string updated_at = 12;
+}
+
+message Conversation {
+  int64 id = 1;
+  int64 user_id = 2;
+  int64 agent_id = 3;
+  string title = 4;
+  int64 status = 5;
+  string last_message_at = 6;
+  string created_at = 7;
+  string updated_at = 8;
+}
+
+message Message {
+  int64 id = 1;
+  int64 conversation_id = 2;
+  int64 user_id = 3;
+  int64 agent_id = 4;
+  string role = 5;
+  string content = 6;
+  string model_provider = 7;
+  string model_name = 8;
+  int64 prompt_tokens = 9;
+  int64 completion_tokens = 10;
+  int64 status = 11;
+  string error_message = 12;
+  string created_at = 13;
+}
+
+message RegisterUserRequest {
+  string email = 1;
+  string password = 2;
+  string nickname = 3;
+}
+
+message RegisterUserResponse {
+  User user = 1;
+}
+
+message VerifyLoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message VerifyLoginResponse {
+  User user = 1;
+}
+
+message CreateAgentRequest {
+  int64 user_id = 1;
+  string name = 2;
+  string description = 3;
+  string system_prompt = 4;
+  string model_provider = 5;
+  string model_name = 6;
+  double temperature = 7;
+  int64 max_tokens = 8;
+}
+
+message UpdateAgentRequest {
+  int64 id = 1;
+  int64 user_id = 2;
+  string name = 3;
+  string description = 4;
+  string system_prompt = 5;
+  string model_provider = 6;
+  string model_name = 7;
+  double temperature = 8;
+  int64 max_tokens = 9;
+  int64 status = 10;
+}
+
+message DeleteAgentRequest {
+  int64 id = 1;
+  int64 user_id = 2;
+}
+
+message GetAgentRequest {
+  int64 id = 1;
+  int64 user_id = 2;
+}
+
+message AgentResponse {
+  Agent agent = 1;
+}
+
+message ListAgentsRequest {
+  int64 user_id = 1;
+}
+
+message ListAgentsResponse {
+  repeated Agent list = 1;
+}
+
+message CreateConversationRequest {
+  int64 user_id = 1;
+  int64 agent_id = 2;
+  string title = 3;
+}
+
+message ConversationResponse {
+  Conversation conversation = 1;
+}
+
+message ListConversationsRequest {
+  int64 user_id = 1;
+  int64 agent_id = 2;
+  int64 page = 3;
+  int64 size = 4;
+}
+
+message ListConversationsResponse {
+  repeated Conversation list = 1;
+}
+
+message GetConversationMessagesRequest {
+  int64 user_id = 1;
+  int64 conversation_id = 2;
+}
+
+message GetConversationMessagesResponse {
+  repeated Message list = 1;
+}
+
+message CreateUserMessageRequest {
+  int64 user_id = 1;
+  int64 conversation_id = 2;
+  int64 agent_id = 3;
+  string content = 4;
+}
+
+message CreateAssistantMessageRequest {
+  int64 conversation_id = 1;
+  int64 agent_id = 2;
+  string content = 3;
+  string model_provider = 4;
+  string model_name = 5;
+  int64 prompt_tokens = 6;
+  int64 completion_tokens = 7;
+  int64 status = 8;
+  string error_message = 9;
+}
+
+message MessageResponse {
+  Message message = 1;
+}
+
+message BuildChatContextRequest {
+  int64 user_id = 1;
+  int64 agent_id = 2;
+  int64 conversation_id = 3;
+}
+
+message BuildChatContextResponse {
+  Agent agent = 1;
+  Conversation conversation = 2;
+  repeated Message messages = 3;
+}
+
+service Core {
+  rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse);
+  rpc VerifyLogin(VerifyLoginRequest) returns (VerifyLoginResponse);
+  rpc CreateAgent(CreateAgentRequest) returns (AgentResponse);
+  rpc UpdateAgent(UpdateAgentRequest) returns (AgentResponse);
+  rpc DeleteAgent(DeleteAgentRequest) returns (Empty);
+  rpc GetAgent(GetAgentRequest) returns (AgentResponse);
+  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse);
+  rpc CreateConversation(CreateConversationRequest) returns (ConversationResponse);
+  rpc ListConversations(ListConversationsRequest) returns (ListConversationsResponse);
+  rpc GetConversationMessages(GetConversationMessagesRequest) returns (GetConversationMessagesResponse);
+  rpc CreateUserMessage(CreateUserMessageRequest) returns (MessageResponse);
+  rpc CreateAssistantMessage(CreateAssistantMessageRequest) returns (MessageResponse);
+  rpc BuildChatContext(BuildChatContextRequest) returns (BuildChatContextResponse);
+}

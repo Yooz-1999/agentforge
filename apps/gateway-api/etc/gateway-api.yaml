@@ -1,0 +1,12 @@
+Name: gateway-api
+Host: 0.0.0.0
+Port: 8888
+CoreRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: agentforge.core.rpc
+JWT:
+  Secret: change-me
+  AccessExpireSeconds: 7200
+  RefreshExpireSeconds: 2592000

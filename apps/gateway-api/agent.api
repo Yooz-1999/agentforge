@@ -1,0 +1,182 @@
+syntax = "v1"
+
+type UserInfo {
+	Id       int64  `json:"id"`
+	Email    string `json:"email"`
+	Nickname string `json:"nickname"`
+}
+
+type RegisterRequest {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+	Nickname string `json:"nickname"`
+}
+
+type RegisterResponse {
+	Id       int64  `json:"id"`
+	Email    string `json:"email"`
+	Nickname string `json:"nickname"`
+}
+
+type LoginRequest {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+type LoginResponse {
+	AccessToken  string   `json:"access_token"`
+	RefreshToken string   `json:"refresh_token"`
+	ExpiresIn    int64    `json:"expires_in"`
+	User         UserInfo `json:"user"`
+}
+
+type RefreshTokenRequest {
+	RefreshToken string `json:"refresh_token"`
+}
+
+type RefreshTokenResponse {
+	AccessToken  string `json:"access_token"`
+	RefreshToken string `json:"refresh_token"`
+	ExpiresIn    int64  `json:"expires_in"`
+}
+
+type AgentItem {
+	Id            int64   `json:"id"`
+	Name          string  `json:"name"`
+	Description   string  `json:"description"`
+	SystemPrompt  string  `json:"system_prompt"`
+	ModelProvider string  `json:"model_provider"`
+	ModelName     string  `json:"model_name"`
+	Temperature   float64 `json:"temperature"`
+	MaxTokens     int64   `json:"max_tokens"`
+	Status        int64   `json:"status"`
+	CreatedAt     string  `json:"created_at"`
+	UpdatedAt     string  `json:"updated_at"`
+}
+
+type CreateAgentRequest {
+	Name          string  `json:"name"`
+	Description   string  `json:"description"`
+	SystemPrompt  string  `json:"system_prompt"`
+	ModelProvider string  `json:"model_provider"`
+	ModelName     string  `json:"model_name"`
+	Temperature   float64 `json:"temperature"`
+	MaxTokens     int64   `json:"max_tokens,optional"`
+}
+
+type UpdateAgentRequest {
+	Id            int64   `path:"id"`
+	Name          string  `json:"name"`
+	Description   string  `json:"description"`
+	SystemPrompt  string  `json:"system_prompt"`
+	ModelProvider string  `json:"model_provider"`
+	ModelName     string  `json:"model_name"`
+	Temperature   float64 `json:"temperature"`
+	MaxTokens     int64   `json:"max_tokens,optional"`
+	Status        int64   `json:"status"`
+}
+
+type GetAgentRequest {
+	Id int64 `path:"id"`
+}
+
+type DeleteAgentRequest {
+	Id int64 `path:"id"`
+}
+
+type ListAgentsResponse {
+	List []AgentItem `json:"list"`
+}
+
+type AgentResponse {
+	Agent AgentItem `json:"agent"`
+}
+
+type EmptyResponse {}
+
+type ListConversationsRequest {
+	AgentId int64 `form:"agent_id,optional"`
+	Page    int64 `form:"page,optional"`
+	Size    int64 `form:"size,optional"`
+}
+
+type ConversationItem {
+	Id            int64  `json:"id"`
+	AgentId       int64  `json:"agent_id"`
+	Title         string `json:"title"`
+	Status        int64  `json:"status"`
+	LastMessageAt string `json:"last_message_at"`
+	CreatedAt     string `json:"created_at"`
+	UpdatedAt     string `json:"updated_at"`
+}
+
+type ListConversationsResponse {
+	List []ConversationItem `json:"list"`
+}
+
+type CreateConversationRequest {
+	AgentId int64  `json:"agent_id"`
+	Title   string `json:"title,optional"`
+}
+
+type ConversationResponse {
+	Conversation ConversationItem `json:"conversation"`
+}
+
+type ListMessagesRequest {
+	Id int64 `path:"id"`
+}
+
+type MessageItem {
+	Id               int64  `json:"id"`
+	ConversationId   int64  `json:"conversation_id"`
+	Role             string `json:"role"`
+	Content          string `json:"content"`
+	ModelProvider    string `json:"model_provider,optional"`
+	ModelName        string `json:"model_name,optional"`
+	Status           int64  `json:"status"`
+	ErrorMessage     string `json:"error_message,optional"`
+	PromptTokens     int64  `json:"prompt_tokens,optional"`
+	CompletionTokens int64  `json:"completion_tokens,optional"`
+	CreatedAt        string `json:"created_at"`
+}
+
+type ListMessagesResponse {
+	List []MessageItem `json:"list"`
+}
+
+service gateway-api {
+	@handler RegisterHandler
+	post /api/v1/auth/register (RegisterRequest) returns (RegisterResponse)
+
+	@handler LoginHandler
+	post /api/v1/auth/login (LoginRequest) returns (LoginResponse)
+
+	@handler RefreshTokenHandler
+	post /api/v1/auth/refresh (RefreshTokenRequest) returns (RefreshTokenResponse)
+
+	@handler ListAgentsHandler
+	get /api/v1/agents returns (ListAgentsResponse)
+
+	@handler CreateAgentHandler
+	post /api/v1/agents (CreateAgentRequest) returns (AgentResponse)
+
+	@handler GetAgentHandler
+	get /api/v1/agents/:id (GetAgentRequest) returns (AgentResponse)
+
+	@handler UpdateAgentHandler
+	put /api/v1/agents/:id (UpdateAgentRequest) returns (AgentResponse)
+
+	@handler DeleteAgentHandler
+	delete /api/v1/agents/:id (DeleteAgentRequest) returns (EmptyResponse)
+
+	@handler ListConversationsHandler
+	get /api/v1/conversations (ListConversationsRequest) returns (ListConversationsResponse)
+
+	@handler CreateConversationHandler
+	post /api/v1/conversations (CreateConversationRequest) returns (ConversationResponse)
+
+	@handler ListMessagesHandler
+	get /api/v1/conversations/:id/messages (ListMessagesRequest) returns (ListMessagesResponse)
+}
+
