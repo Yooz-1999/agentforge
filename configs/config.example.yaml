@@ -1,0 +1,25 @@
+project:
+  name: agentforge
+  env: local
+
+mysql:
+  dsn: root:password@tcp(127.0.0.1:3306)/agentforge?charset=utf8mb4&parseTime=True&loc=Local
+
+redis:
+  addr: 127.0.0.1:6379
+  password: ""
+  db: 0
+
+etcd:
+  hosts:
+    - 127.0.0.1:2379
+
+jwt:
+  secret: change-me
+  access_expire_seconds: 7200
+  refresh_expire_seconds: 2592000
+
+llm:
+  openai:
+    api_key: sk-example
+    base_url: https://api.openai.com

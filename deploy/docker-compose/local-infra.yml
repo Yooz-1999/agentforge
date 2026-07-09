@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: agentforge-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: agentforge
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  redis:
+    image: redis:7.4
+    container_name: agentforge-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  etcd:
+    image: bitnami/etcd:3.5
+    container_name: agentforge-etcd
+    environment:
+      ALLOW_NONE_AUTHENTICATION: "yes"
+      ETCD_ADVERTISE_CLIENT_URLS: http://127.0.0.1:2379
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+    ports:
+      - "2379:2379"
+    volumes:
+      - etcd-data:/bitnami/etcd
+
+volumes:
+  mysql-data:
+  redis-data:
+  etcd-data:
