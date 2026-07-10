@@ -6,6 +6,7 @@ package logic
 import (
 	"context"
 
+	"github.com/Yooz-1999/agentforge/apps/core-rpc/pb"
 	"github.com/Yooz-1999/agentforge/apps/gateway-api/internal/svc"
 	"github.com/Yooz-1999/agentforge/apps/gateway-api/internal/types"
 
@@ -27,7 +28,18 @@ func NewRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Register
 }
 
 func (l *RegisterLogic) Register(req *types.RegisterRequest) (resp *types.RegisterResponse, err error) {
-	// todo: add your logic here and delete this line
+	result, err := l.svcCtx.Core.RegisterUser(l.ctx, &pb.RegisterUserRequest{
+		Email:    req.Email,
+		Password: req.Password,
+		Nickname: req.Nickname,
+	})
+	if err != nil {
+		return nil, err
+	}
 
-	return
+	return &types.RegisterResponse{
+		Id:       result.User.Id,
+		Email:    result.User.Email,
+		Nickname: result.User.Nickname,
+	}, nil
 }

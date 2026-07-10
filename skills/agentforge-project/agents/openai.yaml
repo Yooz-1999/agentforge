@@ -1,0 +1,4 @@
+interface:
+  display_name: "AgentForge Project"
+  short_description: "AgentForge 项目记忆和开发工作流"
+  default_prompt: "Use $agentforge-project to continue AgentForge backend development with the project memory and local workflow."

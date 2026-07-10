@@ -76,6 +76,14 @@ message VerifyLoginResponse {
   User user = 1;
 }
 
+message GetUserForAuthRequest {
+  int64 id = 1;
+}
+
+message GetUserForAuthResponse {
+  User user = 1;
+}
+
 message CreateAgentRequest {
   int64 user_id = 1;
   string name = 2;
@@ -190,6 +198,7 @@ message BuildChatContextResponse {
 service Core {
   rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse);
   rpc VerifyLogin(VerifyLoginRequest) returns (VerifyLoginResponse);
+  rpc GetUserForAuth(GetUserForAuthRequest) returns (GetUserForAuthResponse);
   rpc CreateAgent(CreateAgentRequest) returns (AgentResponse);
   rpc UpdateAgent(UpdateAgentRequest) returns (AgentResponse);
   rpc DeleteAgent(DeleteAgentRequest) returns (Empty);

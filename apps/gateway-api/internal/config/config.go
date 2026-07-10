@@ -11,6 +11,7 @@ import (
 
 type Config struct {
 	rest.RestConf
-	CoreRPC zrpc.RpcClientConf
-	JWT     sharedconfig.JWTConf
+	CoreRPC  zrpc.RpcClientConf
+	JWT      sharedconfig.JWTConf
+	AppRedis sharedconfig.RedisConf
 }

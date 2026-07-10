@@ -29,6 +29,8 @@ type (
 	GetAgentRequest                 = pb.GetAgentRequest
 	GetConversationMessagesRequest  = pb.GetConversationMessagesRequest
 	GetConversationMessagesResponse = pb.GetConversationMessagesResponse
+	GetUserForAuthRequest           = pb.GetUserForAuthRequest
+	GetUserForAuthResponse          = pb.GetUserForAuthResponse
 	ListAgentsRequest               = pb.ListAgentsRequest
 	ListAgentsResponse              = pb.ListAgentsResponse
 	ListConversationsRequest        = pb.ListConversationsRequest
@@ -45,6 +47,7 @@ type (
 	Core interface {
 		RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error)
 		VerifyLogin(ctx context.Context, in *VerifyLoginRequest, opts ...grpc.CallOption) (*VerifyLoginResponse, error)
+		GetUserForAuth(ctx context.Context, in *GetUserForAuthRequest, opts ...grpc.CallOption) (*GetUserForAuthResponse, error)
 		CreateAgent(ctx context.Context, in *CreateAgentRequest, opts ...grpc.CallOption) (*AgentResponse, error)
 		UpdateAgent(ctx context.Context, in *UpdateAgentRequest, opts ...grpc.CallOption) (*AgentResponse, error)
 		DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*Empty, error)
@@ -77,6 +80,11 @@ func (m *defaultCore) RegisterUser(ctx context.Context, in *RegisterUserRequest,
 func (m *defaultCore) VerifyLogin(ctx context.Context, in *VerifyLoginRequest, opts ...grpc.CallOption) (*VerifyLoginResponse, error) {
 	client := pb.NewCoreClient(m.cli.Conn())
 	return client.VerifyLogin(ctx, in, opts...)
+}
+
+func (m *defaultCore) GetUserForAuth(ctx context.Context, in *GetUserForAuthRequest, opts ...grpc.CallOption) (*GetUserForAuthResponse, error) {
+	client := pb.NewCoreClient(m.cli.Conn())
+	return client.GetUserForAuth(ctx, in, opts...)
 }
 
 func (m *defaultCore) CreateAgent(ctx context.Context, in *CreateAgentRequest, opts ...grpc.CallOption) (*AgentResponse, error) {

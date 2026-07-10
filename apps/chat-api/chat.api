@@ -10,6 +10,9 @@ type ChatStreamBootstrapResponse {
 	RequestId string `json:"request_id"`
 }
 
+@server (
+	middleware: AccessAuth
+)
 service chat-api {
 	@handler ChatStreamHandler
 	post /api/v1/chat/stream (ChatStreamRequest) returns (ChatStreamBootstrapResponse)

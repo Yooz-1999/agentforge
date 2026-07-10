@@ -7,6 +7,8 @@ import (
 	"github.com/Yooz-1999/agentforge/apps/core-rpc/pb"
 
 	"github.com/zeromicro/go-zero/core/logx"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type CreateAssistantMessageLogic struct {
@@ -24,7 +26,5 @@ func NewCreateAssistantMessageLogic(ctx context.Context, svcCtx *svc.ServiceCont
 }
 
 func (l *CreateAssistantMessageLogic) CreateAssistantMessage(in *pb.CreateAssistantMessageRequest) (*pb.MessageResponse, error) {
-	// todo: add your logic here and delete this line
-
-	return &pb.MessageResponse{}, nil
+	return nil, status.Error(codes.Unimplemented, "接口还没有实现")
 }

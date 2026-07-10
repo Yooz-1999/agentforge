@@ -154,7 +154,12 @@ service gateway-api {
 
 	@handler RefreshTokenHandler
 	post /api/v1/auth/refresh (RefreshTokenRequest) returns (RefreshTokenResponse)
+}
 
+@server (
+	middleware: AccessAuth
+)
+service gateway-api {
 	@handler ListAgentsHandler
 	get /api/v1/agents returns (ListAgentsResponse)
 

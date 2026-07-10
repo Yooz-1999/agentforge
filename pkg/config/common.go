@@ -1,7 +1,8 @@
 package config
 
 type JWTConf struct {
-	Secret               string
+	AccessSecret         string
+	RefreshSecret        string
 	AccessExpireSeconds  int64
 	RefreshExpireSeconds int64
 }

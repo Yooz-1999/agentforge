@@ -8,5 +8,4 @@ import (
 type Config struct {
 	zrpc.RpcServerConf
 	MySQL sharedconfig.MySQLConf
-	Redis sharedconfig.RedisConf
 }

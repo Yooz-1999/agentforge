@@ -1,0 +1,5 @@
+Name: core.rpc
+Mode: dev
+ListenOn: 0.0.0.0:8080
+MySQL:
+  DataSource: root:password@tcp(127.0.0.1:3306)/agentforge?charset=utf8mb4&parseTime=True&loc=Local

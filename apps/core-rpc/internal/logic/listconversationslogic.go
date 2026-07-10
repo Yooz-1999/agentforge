@@ -7,6 +7,8 @@ import (
 	"github.com/Yooz-1999/agentforge/apps/core-rpc/pb"
 
 	"github.com/zeromicro/go-zero/core/logx"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type ListConversationsLogic struct {
@@ -24,7 +26,5 @@ func NewListConversationsLogic(ctx context.Context, svcCtx *svc.ServiceContext) 
 }
 
 func (l *ListConversationsLogic) ListConversations(in *pb.ListConversationsRequest) (*pb.ListConversationsResponse, error) {
-	// todo: add your logic here and delete this line
-
-	return &pb.ListConversationsResponse{}, nil
+	return nil, status.Error(codes.Unimplemented, "接口还没有实现")
 }

@@ -15,31 +15,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
-				Method:  http.MethodGet,
-				Path:    "/api/v1/agents",
-				Handler: ListAgentsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/api/v1/agents",
-				Handler: CreateAgentHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/api/v1/agents/:id",
-				Handler: GetAgentHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/api/v1/agents/:id",
-				Handler: UpdateAgentHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodDelete,
-				Path:    "/api/v1/agents/:id",
-				Handler: DeleteAgentHandler(serverCtx),
-			},
-			{
 				Method:  http.MethodPost,
 				Path:    "/api/v1/auth/login",
 				Handler: LoginHandler(serverCtx),
@@ -54,21 +29,54 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/v1/auth/register",
 				Handler: RegisterHandler(serverCtx),
 			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/api/v1/conversations",
-				Handler: ListConversationsHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/api/v1/conversations",
-				Handler: CreateConversationHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/api/v1/conversations/:id/messages",
-				Handler: ListMessagesHandler(serverCtx),
-			},
 		},
+	)
+
+	server.AddRoutes(
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.AccessAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodGet,
+					Path:    "/api/v1/agents",
+					Handler: ListAgentsHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/api/v1/agents",
+					Handler: CreateAgentHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/api/v1/agents/:id",
+					Handler: GetAgentHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/api/v1/agents/:id",
+					Handler: UpdateAgentHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodDelete,
+					Path:    "/api/v1/agents/:id",
+					Handler: DeleteAgentHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/api/v1/conversations",
+					Handler: ListConversationsHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/api/v1/conversations",
+					Handler: CreateConversationHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/api/v1/conversations/:id/messages",
+					Handler: ListMessagesHandler(serverCtx),
+				},
+			}...,
+		),
 	)
 }

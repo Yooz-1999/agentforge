@@ -829,6 +829,62 @@ type Provider interface {
 
 这样比较适合 go-zero 的服务启动方式，也方便后面继续扩展更多服务
 
+### 14.3 本机开发环境建议
+
+第一版本地开发可以优先使用本机安装的 MySQL 和 Redis，不强制要求一直开 Docker。
+
+这样做的原因是：
+
+1. 本机直接启动更省资源
+2. 对开发机配置一般的情况更友好
+3. 当前项目还在早期阶段，本地开发优先保证启动简单和调试顺畅
+
+推荐方式：
+
+1. 本机启动 MySQL
+2. 本机启动 Redis
+3. 创建数据库 `agentforge`
+4. 执行 `sql/migrations/001_init.sql` 建表
+
+数据库创建时建议：
+
+1. 字符集使用 `utf8mb4`
+2. 排序规则优先使用 `utf8mb4_0900_ai_ci`
+3. 如果本机没有 `utf8mb4_0900_ai_ci`，使用 `utf8mb4_unicode_520_ci` 也可以
+
+这意味着：
+
+1. 你截图里选的 `utf8mb4_unicode_520_ci` 是可用的
+2. 这个选择不会影响第一版正常开发
+3. 只是从 MySQL 8/9 的默认习惯来看，`utf8mb4_0900_ai_ci` 会更常见一些
+
+另外要注意：
+
+1. 如果使用本机 MySQL，项目配置里的用户名和密码要改成你本机实际可用的那组
+2. 不要默认照搬 Docker 示例里的 `root/password`
+
+本机启动时还建议这样处理：
+
+1. `core-rpc` 本地直接监听固定端口，比如 `127.0.0.1:8080`
+2. `gateway-api` 本地直接连接这个端口
+3. `chat-api` 本地也直接连接这个端口
+4. 本地调试阶段先不强制依赖 `etcd`
+
+这样做的结果是：
+
+1. 启动步骤更少
+2. 排查问题时更容易看清到底是哪一层没通
+3. 注册、登录这类基础链路可以先尽快跑通
+
+另外建议在配置命名上避开框架内部字段名。
+
+例如：
+
+1. 业务自己使用的 Redis，可以命名成 `AppRedis`
+2. 不要直接命名成 `Redis`
+
+这样可以避免和 go-zero 的 RPC 内部配置字段重名，导致启动时把两套配置混在一起
+
 示例结构：
 
 ```yaml
@@ -836,7 +892,7 @@ server:
   port: 8080
 
 mysql:
-  dsn: root:password@tcp(127.0.0.1:3306)/agentforge?charset=utf8mb4&parseTime=True&loc=Local
+  dsn: root@tcp(127.0.0.1:3306)/agentforge?charset=utf8mb4&parseTime=True&loc=Local
 
 redis:
   addr: 127.0.0.1:6379
@@ -849,7 +905,8 @@ etcd:
   key: agentforge.core.rpc
 
 jwt:
-  secret: your-secret
+  access_secret: your-access-secret
+  refresh_secret: your-refresh-secret
   access_expire_minutes: 120
   refresh_expire_hours: 720
 

@@ -33,6 +33,11 @@ func (s *CoreServer) VerifyLogin(ctx context.Context, in *pb.VerifyLoginRequest)
 	return l.VerifyLogin(in)
 }
 
+func (s *CoreServer) GetUserForAuth(ctx context.Context, in *pb.GetUserForAuthRequest) (*pb.GetUserForAuthResponse, error) {
+	l := logic.NewGetUserForAuthLogic(ctx, s.svcCtx)
+	return l.GetUserForAuth(in)
+}
+
 func (s *CoreServer) CreateAgent(ctx context.Context, in *pb.CreateAgentRequest) (*pb.AgentResponse, error) {
 	l := logic.NewCreateAgentLogic(ctx, s.svcCtx)
 	return l.CreateAgent(in)

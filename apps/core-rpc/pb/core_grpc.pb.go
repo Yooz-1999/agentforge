@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	Core_RegisterUser_FullMethodName            = "/core.Core/RegisterUser"
 	Core_VerifyLogin_FullMethodName             = "/core.Core/VerifyLogin"
+	Core_GetUserForAuth_FullMethodName          = "/core.Core/GetUserForAuth"
 	Core_CreateAgent_FullMethodName             = "/core.Core/CreateAgent"
 	Core_UpdateAgent_FullMethodName             = "/core.Core/UpdateAgent"
 	Core_DeleteAgent_FullMethodName             = "/core.Core/DeleteAgent"
@@ -40,6 +41,7 @@ const (
 type CoreClient interface {
 	RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error)
 	VerifyLogin(ctx context.Context, in *VerifyLoginRequest, opts ...grpc.CallOption) (*VerifyLoginResponse, error)
+	GetUserForAuth(ctx context.Context, in *GetUserForAuthRequest, opts ...grpc.CallOption) (*GetUserForAuthResponse, error)
 	CreateAgent(ctx context.Context, in *CreateAgentRequest, opts ...grpc.CallOption) (*AgentResponse, error)
 	UpdateAgent(ctx context.Context, in *UpdateAgentRequest, opts ...grpc.CallOption) (*AgentResponse, error)
 	DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*Empty, error)
@@ -75,6 +77,16 @@ func (c *coreClient) VerifyLogin(ctx context.Context, in *VerifyLoginRequest, op
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyLoginResponse)
 	err := c.cc.Invoke(ctx, Core_VerifyLogin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *coreClient) GetUserForAuth(ctx context.Context, in *GetUserForAuthRequest, opts ...grpc.CallOption) (*GetUserForAuthResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserForAuthResponse)
+	err := c.cc.Invoke(ctx, Core_GetUserForAuth_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -197,6 +209,7 @@ func (c *coreClient) BuildChatContext(ctx context.Context, in *BuildChatContextR
 type CoreServer interface {
 	RegisterUser(context.Context, *RegisterUserRequest) (*RegisterUserResponse, error)
 	VerifyLogin(context.Context, *VerifyLoginRequest) (*VerifyLoginResponse, error)
+	GetUserForAuth(context.Context, *GetUserForAuthRequest) (*GetUserForAuthResponse, error)
 	CreateAgent(context.Context, *CreateAgentRequest) (*AgentResponse, error)
 	UpdateAgent(context.Context, *UpdateAgentRequest) (*AgentResponse, error)
 	DeleteAgent(context.Context, *DeleteAgentRequest) (*Empty, error)
@@ -223,6 +236,9 @@ func (UnimplementedCoreServer) RegisterUser(context.Context, *RegisterUserReques
 }
 func (UnimplementedCoreServer) VerifyLogin(context.Context, *VerifyLoginRequest) (*VerifyLoginResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method VerifyLogin not implemented")
+}
+func (UnimplementedCoreServer) GetUserForAuth(context.Context, *GetUserForAuthRequest) (*GetUserForAuthResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetUserForAuth not implemented")
 }
 func (UnimplementedCoreServer) CreateAgent(context.Context, *CreateAgentRequest) (*AgentResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateAgent not implemented")
@@ -310,6 +326,24 @@ func _Core_VerifyLogin_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CoreServer).VerifyLogin(ctx, req.(*VerifyLoginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Core_GetUserForAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserForAuthRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CoreServer).GetUserForAuth(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Core_GetUserForAuth_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CoreServer).GetUserForAuth(ctx, req.(*GetUserForAuthRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -526,6 +560,10 @@ var Core_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "VerifyLogin",
 			Handler:    _Core_VerifyLogin_Handler,
+		},
+		{
+			MethodName: "GetUserForAuth",
+			Handler:    _Core_GetUserForAuth_Handler,
 		},
 		{
 			MethodName: "CreateAgent",

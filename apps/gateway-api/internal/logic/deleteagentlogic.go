@@ -8,6 +8,7 @@ import (
 
 	"github.com/Yooz-1999/agentforge/apps/gateway-api/internal/svc"
 	"github.com/Yooz-1999/agentforge/apps/gateway-api/internal/types"
+	apperrors "github.com/Yooz-1999/agentforge/pkg/errors"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -27,7 +28,5 @@ func NewDeleteAgentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Delet
 }
 
 func (l *DeleteAgentLogic) DeleteAgent(req *types.DeleteAgentRequest) (resp *types.EmptyResponse, err error) {
-	// todo: add your logic here and delete this line
-
-	return
+	return nil, apperrors.ErrUnimplemented
 }

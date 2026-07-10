@@ -13,12 +13,15 @@ import (
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/api/v1/chat/stream",
-				Handler: ChatStreamHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.AccessAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/api/v1/chat/stream",
+					Handler: ChatStreamHandler(serverCtx),
+				},
+			}...,
+		),
 	)
 }

@@ -7,6 +7,8 @@ import (
 	"github.com/Yooz-1999/agentforge/apps/core-rpc/pb"
 
 	"github.com/zeromicro/go-zero/core/logx"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type GetAgentLogic struct {
@@ -24,7 +26,5 @@ func NewGetAgentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetAgent
 }
 
 func (l *GetAgentLogic) GetAgent(in *pb.GetAgentRequest) (*pb.AgentResponse, error) {
-	// todo: add your logic here and delete this line
-
-	return &pb.AgentResponse{}, nil
+	return nil, status.Error(codes.Unimplemented, "接口还没有实现")
 }

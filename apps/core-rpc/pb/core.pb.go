@@ -713,6 +713,94 @@ func (x *VerifyLoginResponse) GetUser() *User {
 	return nil
 }
 
+type GetUserForAuthRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserForAuthRequest) Reset() {
+	*x = GetUserForAuthRequest{}
+	mi := &file_core_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserForAuthRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserForAuthRequest) ProtoMessage() {}
+
+func (x *GetUserForAuthRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserForAuthRequest.ProtoReflect.Descriptor instead.
+func (*GetUserForAuthRequest) Descriptor() ([]byte, []int) {
+	return file_core_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetUserForAuthRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type GetUserForAuthResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserForAuthResponse) Reset() {
+	*x = GetUserForAuthResponse{}
+	mi := &file_core_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserForAuthResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserForAuthResponse) ProtoMessage() {}
+
+func (x *GetUserForAuthResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserForAuthResponse.ProtoReflect.Descriptor instead.
+func (*GetUserForAuthResponse) Descriptor() ([]byte, []int) {
+	return file_core_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GetUserForAuthResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 type CreateAgentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -729,7 +817,7 @@ type CreateAgentRequest struct {
 
 func (x *CreateAgentRequest) Reset() {
 	*x = CreateAgentRequest{}
-	mi := &file_core_proto_msgTypes[9]
+	mi := &file_core_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -741,7 +829,7 @@ func (x *CreateAgentRequest) String() string {
 func (*CreateAgentRequest) ProtoMessage() {}
 
 func (x *CreateAgentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[9]
+	mi := &file_core_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -754,7 +842,7 @@ func (x *CreateAgentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAgentRequest.ProtoReflect.Descriptor instead.
 func (*CreateAgentRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{9}
+	return file_core_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CreateAgentRequest) GetUserId() int64 {
@@ -831,7 +919,7 @@ type UpdateAgentRequest struct {
 
 func (x *UpdateAgentRequest) Reset() {
 	*x = UpdateAgentRequest{}
-	mi := &file_core_proto_msgTypes[10]
+	mi := &file_core_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -843,7 +931,7 @@ func (x *UpdateAgentRequest) String() string {
 func (*UpdateAgentRequest) ProtoMessage() {}
 
 func (x *UpdateAgentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[10]
+	mi := &file_core_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -856,7 +944,7 @@ func (x *UpdateAgentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAgentRequest.ProtoReflect.Descriptor instead.
 func (*UpdateAgentRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{10}
+	return file_core_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *UpdateAgentRequest) GetId() int64 {
@@ -939,7 +1027,7 @@ type DeleteAgentRequest struct {
 
 func (x *DeleteAgentRequest) Reset() {
 	*x = DeleteAgentRequest{}
-	mi := &file_core_proto_msgTypes[11]
+	mi := &file_core_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -951,7 +1039,7 @@ func (x *DeleteAgentRequest) String() string {
 func (*DeleteAgentRequest) ProtoMessage() {}
 
 func (x *DeleteAgentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[11]
+	mi := &file_core_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -964,7 +1052,7 @@ func (x *DeleteAgentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAgentRequest.ProtoReflect.Descriptor instead.
 func (*DeleteAgentRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{11}
+	return file_core_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DeleteAgentRequest) GetId() int64 {
@@ -991,7 +1079,7 @@ type GetAgentRequest struct {
 
 func (x *GetAgentRequest) Reset() {
 	*x = GetAgentRequest{}
-	mi := &file_core_proto_msgTypes[12]
+	mi := &file_core_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1003,7 +1091,7 @@ func (x *GetAgentRequest) String() string {
 func (*GetAgentRequest) ProtoMessage() {}
 
 func (x *GetAgentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[12]
+	mi := &file_core_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1016,7 +1104,7 @@ func (x *GetAgentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAgentRequest.ProtoReflect.Descriptor instead.
 func (*GetAgentRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{12}
+	return file_core_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetAgentRequest) GetId() int64 {
@@ -1042,7 +1130,7 @@ type AgentResponse struct {
 
 func (x *AgentResponse) Reset() {
 	*x = AgentResponse{}
-	mi := &file_core_proto_msgTypes[13]
+	mi := &file_core_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1054,7 +1142,7 @@ func (x *AgentResponse) String() string {
 func (*AgentResponse) ProtoMessage() {}
 
 func (x *AgentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[13]
+	mi := &file_core_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1067,7 +1155,7 @@ func (x *AgentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgentResponse.ProtoReflect.Descriptor instead.
 func (*AgentResponse) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{13}
+	return file_core_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *AgentResponse) GetAgent() *Agent {
@@ -1086,7 +1174,7 @@ type ListAgentsRequest struct {
 
 func (x *ListAgentsRequest) Reset() {
 	*x = ListAgentsRequest{}
-	mi := &file_core_proto_msgTypes[14]
+	mi := &file_core_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1098,7 +1186,7 @@ func (x *ListAgentsRequest) String() string {
 func (*ListAgentsRequest) ProtoMessage() {}
 
 func (x *ListAgentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[14]
+	mi := &file_core_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1111,7 +1199,7 @@ func (x *ListAgentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAgentsRequest.ProtoReflect.Descriptor instead.
 func (*ListAgentsRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{14}
+	return file_core_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListAgentsRequest) GetUserId() int64 {
@@ -1130,7 +1218,7 @@ type ListAgentsResponse struct {
 
 func (x *ListAgentsResponse) Reset() {
 	*x = ListAgentsResponse{}
-	mi := &file_core_proto_msgTypes[15]
+	mi := &file_core_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1142,7 +1230,7 @@ func (x *ListAgentsResponse) String() string {
 func (*ListAgentsResponse) ProtoMessage() {}
 
 func (x *ListAgentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[15]
+	mi := &file_core_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1155,7 +1243,7 @@ func (x *ListAgentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAgentsResponse.ProtoReflect.Descriptor instead.
 func (*ListAgentsResponse) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{15}
+	return file_core_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ListAgentsResponse) GetList() []*Agent {
@@ -1176,7 +1264,7 @@ type CreateConversationRequest struct {
 
 func (x *CreateConversationRequest) Reset() {
 	*x = CreateConversationRequest{}
-	mi := &file_core_proto_msgTypes[16]
+	mi := &file_core_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1188,7 +1276,7 @@ func (x *CreateConversationRequest) String() string {
 func (*CreateConversationRequest) ProtoMessage() {}
 
 func (x *CreateConversationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[16]
+	mi := &file_core_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1201,7 +1289,7 @@ func (x *CreateConversationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateConversationRequest.ProtoReflect.Descriptor instead.
 func (*CreateConversationRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{16}
+	return file_core_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *CreateConversationRequest) GetUserId() int64 {
@@ -1234,7 +1322,7 @@ type ConversationResponse struct {
 
 func (x *ConversationResponse) Reset() {
 	*x = ConversationResponse{}
-	mi := &file_core_proto_msgTypes[17]
+	mi := &file_core_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1246,7 +1334,7 @@ func (x *ConversationResponse) String() string {
 func (*ConversationResponse) ProtoMessage() {}
 
 func (x *ConversationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[17]
+	mi := &file_core_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1259,7 +1347,7 @@ func (x *ConversationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConversationResponse.ProtoReflect.Descriptor instead.
 func (*ConversationResponse) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{17}
+	return file_core_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ConversationResponse) GetConversation() *Conversation {
@@ -1281,7 +1369,7 @@ type ListConversationsRequest struct {
 
 func (x *ListConversationsRequest) Reset() {
 	*x = ListConversationsRequest{}
-	mi := &file_core_proto_msgTypes[18]
+	mi := &file_core_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1293,7 +1381,7 @@ func (x *ListConversationsRequest) String() string {
 func (*ListConversationsRequest) ProtoMessage() {}
 
 func (x *ListConversationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[18]
+	mi := &file_core_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1306,7 +1394,7 @@ func (x *ListConversationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListConversationsRequest.ProtoReflect.Descriptor instead.
 func (*ListConversationsRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{18}
+	return file_core_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ListConversationsRequest) GetUserId() int64 {
@@ -1346,7 +1434,7 @@ type ListConversationsResponse struct {
 
 func (x *ListConversationsResponse) Reset() {
 	*x = ListConversationsResponse{}
-	mi := &file_core_proto_msgTypes[19]
+	mi := &file_core_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1358,7 +1446,7 @@ func (x *ListConversationsResponse) String() string {
 func (*ListConversationsResponse) ProtoMessage() {}
 
 func (x *ListConversationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[19]
+	mi := &file_core_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1371,7 +1459,7 @@ func (x *ListConversationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListConversationsResponse.ProtoReflect.Descriptor instead.
 func (*ListConversationsResponse) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{19}
+	return file_core_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ListConversationsResponse) GetList() []*Conversation {
@@ -1391,7 +1479,7 @@ type GetConversationMessagesRequest struct {
 
 func (x *GetConversationMessagesRequest) Reset() {
 	*x = GetConversationMessagesRequest{}
-	mi := &file_core_proto_msgTypes[20]
+	mi := &file_core_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1403,7 +1491,7 @@ func (x *GetConversationMessagesRequest) String() string {
 func (*GetConversationMessagesRequest) ProtoMessage() {}
 
 func (x *GetConversationMessagesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[20]
+	mi := &file_core_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1416,7 +1504,7 @@ func (x *GetConversationMessagesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetConversationMessagesRequest.ProtoReflect.Descriptor instead.
 func (*GetConversationMessagesRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{20}
+	return file_core_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GetConversationMessagesRequest) GetUserId() int64 {
@@ -1442,7 +1530,7 @@ type GetConversationMessagesResponse struct {
 
 func (x *GetConversationMessagesResponse) Reset() {
 	*x = GetConversationMessagesResponse{}
-	mi := &file_core_proto_msgTypes[21]
+	mi := &file_core_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1454,7 +1542,7 @@ func (x *GetConversationMessagesResponse) String() string {
 func (*GetConversationMessagesResponse) ProtoMessage() {}
 
 func (x *GetConversationMessagesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[21]
+	mi := &file_core_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1467,7 +1555,7 @@ func (x *GetConversationMessagesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetConversationMessagesResponse.ProtoReflect.Descriptor instead.
 func (*GetConversationMessagesResponse) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{21}
+	return file_core_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetConversationMessagesResponse) GetList() []*Message {
@@ -1489,7 +1577,7 @@ type CreateUserMessageRequest struct {
 
 func (x *CreateUserMessageRequest) Reset() {
 	*x = CreateUserMessageRequest{}
-	mi := &file_core_proto_msgTypes[22]
+	mi := &file_core_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1501,7 +1589,7 @@ func (x *CreateUserMessageRequest) String() string {
 func (*CreateUserMessageRequest) ProtoMessage() {}
 
 func (x *CreateUserMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[22]
+	mi := &file_core_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1514,7 +1602,7 @@ func (x *CreateUserMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserMessageRequest.ProtoReflect.Descriptor instead.
 func (*CreateUserMessageRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{22}
+	return file_core_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *CreateUserMessageRequest) GetUserId() int64 {
@@ -1562,7 +1650,7 @@ type CreateAssistantMessageRequest struct {
 
 func (x *CreateAssistantMessageRequest) Reset() {
 	*x = CreateAssistantMessageRequest{}
-	mi := &file_core_proto_msgTypes[23]
+	mi := &file_core_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1574,7 +1662,7 @@ func (x *CreateAssistantMessageRequest) String() string {
 func (*CreateAssistantMessageRequest) ProtoMessage() {}
 
 func (x *CreateAssistantMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[23]
+	mi := &file_core_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1587,7 +1675,7 @@ func (x *CreateAssistantMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAssistantMessageRequest.ProtoReflect.Descriptor instead.
 func (*CreateAssistantMessageRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{23}
+	return file_core_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CreateAssistantMessageRequest) GetConversationId() int64 {
@@ -1662,7 +1750,7 @@ type MessageResponse struct {
 
 func (x *MessageResponse) Reset() {
 	*x = MessageResponse{}
-	mi := &file_core_proto_msgTypes[24]
+	mi := &file_core_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1674,7 +1762,7 @@ func (x *MessageResponse) String() string {
 func (*MessageResponse) ProtoMessage() {}
 
 func (x *MessageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[24]
+	mi := &file_core_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1687,7 +1775,7 @@ func (x *MessageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MessageResponse.ProtoReflect.Descriptor instead.
 func (*MessageResponse) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{24}
+	return file_core_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *MessageResponse) GetMessage() *Message {
@@ -1708,7 +1796,7 @@ type BuildChatContextRequest struct {
 
 func (x *BuildChatContextRequest) Reset() {
 	*x = BuildChatContextRequest{}
-	mi := &file_core_proto_msgTypes[25]
+	mi := &file_core_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1720,7 +1808,7 @@ func (x *BuildChatContextRequest) String() string {
 func (*BuildChatContextRequest) ProtoMessage() {}
 
 func (x *BuildChatContextRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[25]
+	mi := &file_core_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1733,7 +1821,7 @@ func (x *BuildChatContextRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BuildChatContextRequest.ProtoReflect.Descriptor instead.
 func (*BuildChatContextRequest) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{25}
+	return file_core_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *BuildChatContextRequest) GetUserId() int64 {
@@ -1768,7 +1856,7 @@ type BuildChatContextResponse struct {
 
 func (x *BuildChatContextResponse) Reset() {
 	*x = BuildChatContextResponse{}
-	mi := &file_core_proto_msgTypes[26]
+	mi := &file_core_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1780,7 +1868,7 @@ func (x *BuildChatContextResponse) String() string {
 func (*BuildChatContextResponse) ProtoMessage() {}
 
 func (x *BuildChatContextResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_core_proto_msgTypes[26]
+	mi := &file_core_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1793,7 +1881,7 @@ func (x *BuildChatContextResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BuildChatContextResponse.ProtoReflect.Descriptor instead.
 func (*BuildChatContextResponse) Descriptor() ([]byte, []int) {
-	return file_core_proto_rawDescGZIP(), []int{26}
+	return file_core_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *BuildChatContextResponse) GetAgent() *Agent {
@@ -1891,6 +1979,11 @@ const file_core_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"5\n" +
 	"\x13VerifyLoginResponse\x12\x1e\n" +
 	"\x04user\x18\x01 \x01(\v2\n" +
+	".core.UserR\x04user\"'\n" +
+	"\x15GetUserForAuthRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"8\n" +
+	"\x16GetUserForAuthResponse\x12\x1e\n" +
+	"\x04user\x18\x01 \x01(\v2\n" +
 	".core.UserR\x04user\"\x8f\x02\n" +
 	"\x12CreateAgentRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x12\n" +
@@ -1972,10 +2065,11 @@ const file_core_proto_rawDesc = "" +
 	"\x18BuildChatContextResponse\x12!\n" +
 	"\x05agent\x18\x01 \x01(\v2\v.core.AgentR\x05agent\x126\n" +
 	"\fconversation\x18\x02 \x01(\v2\x12.core.ConversationR\fconversation\x12)\n" +
-	"\bmessages\x18\x03 \x03(\v2\r.core.MessageR\bmessages2\xc2\a\n" +
+	"\bmessages\x18\x03 \x03(\v2\r.core.MessageR\bmessages2\x8f\b\n" +
 	"\x04Core\x12E\n" +
 	"\fRegisterUser\x12\x19.core.RegisterUserRequest\x1a\x1a.core.RegisterUserResponse\x12B\n" +
-	"\vVerifyLogin\x12\x18.core.VerifyLoginRequest\x1a\x19.core.VerifyLoginResponse\x12<\n" +
+	"\vVerifyLogin\x12\x18.core.VerifyLoginRequest\x1a\x19.core.VerifyLoginResponse\x12K\n" +
+	"\x0eGetUserForAuth\x12\x1b.core.GetUserForAuthRequest\x1a\x1c.core.GetUserForAuthResponse\x12<\n" +
 	"\vCreateAgent\x12\x18.core.CreateAgentRequest\x1a\x13.core.AgentResponse\x12<\n" +
 	"\vUpdateAgent\x12\x18.core.UpdateAgentRequest\x1a\x13.core.AgentResponse\x124\n" +
 	"\vDeleteAgent\x12\x18.core.DeleteAgentRequest\x1a\v.core.Empty\x126\n" +
@@ -2001,7 +2095,7 @@ func file_core_proto_rawDescGZIP() []byte {
 	return file_core_proto_rawDescData
 }
 
-var file_core_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_core_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_core_proto_goTypes = []any{
 	(*Empty)(nil),                           // 0: core.Empty
 	(*User)(nil),                            // 1: core.User
@@ -2012,68 +2106,73 @@ var file_core_proto_goTypes = []any{
 	(*RegisterUserResponse)(nil),            // 6: core.RegisterUserResponse
 	(*VerifyLoginRequest)(nil),              // 7: core.VerifyLoginRequest
 	(*VerifyLoginResponse)(nil),             // 8: core.VerifyLoginResponse
-	(*CreateAgentRequest)(nil),              // 9: core.CreateAgentRequest
-	(*UpdateAgentRequest)(nil),              // 10: core.UpdateAgentRequest
-	(*DeleteAgentRequest)(nil),              // 11: core.DeleteAgentRequest
-	(*GetAgentRequest)(nil),                 // 12: core.GetAgentRequest
-	(*AgentResponse)(nil),                   // 13: core.AgentResponse
-	(*ListAgentsRequest)(nil),               // 14: core.ListAgentsRequest
-	(*ListAgentsResponse)(nil),              // 15: core.ListAgentsResponse
-	(*CreateConversationRequest)(nil),       // 16: core.CreateConversationRequest
-	(*ConversationResponse)(nil),            // 17: core.ConversationResponse
-	(*ListConversationsRequest)(nil),        // 18: core.ListConversationsRequest
-	(*ListConversationsResponse)(nil),       // 19: core.ListConversationsResponse
-	(*GetConversationMessagesRequest)(nil),  // 20: core.GetConversationMessagesRequest
-	(*GetConversationMessagesResponse)(nil), // 21: core.GetConversationMessagesResponse
-	(*CreateUserMessageRequest)(nil),        // 22: core.CreateUserMessageRequest
-	(*CreateAssistantMessageRequest)(nil),   // 23: core.CreateAssistantMessageRequest
-	(*MessageResponse)(nil),                 // 24: core.MessageResponse
-	(*BuildChatContextRequest)(nil),         // 25: core.BuildChatContextRequest
-	(*BuildChatContextResponse)(nil),        // 26: core.BuildChatContextResponse
+	(*GetUserForAuthRequest)(nil),           // 9: core.GetUserForAuthRequest
+	(*GetUserForAuthResponse)(nil),          // 10: core.GetUserForAuthResponse
+	(*CreateAgentRequest)(nil),              // 11: core.CreateAgentRequest
+	(*UpdateAgentRequest)(nil),              // 12: core.UpdateAgentRequest
+	(*DeleteAgentRequest)(nil),              // 13: core.DeleteAgentRequest
+	(*GetAgentRequest)(nil),                 // 14: core.GetAgentRequest
+	(*AgentResponse)(nil),                   // 15: core.AgentResponse
+	(*ListAgentsRequest)(nil),               // 16: core.ListAgentsRequest
+	(*ListAgentsResponse)(nil),              // 17: core.ListAgentsResponse
+	(*CreateConversationRequest)(nil),       // 18: core.CreateConversationRequest
+	(*ConversationResponse)(nil),            // 19: core.ConversationResponse
+	(*ListConversationsRequest)(nil),        // 20: core.ListConversationsRequest
+	(*ListConversationsResponse)(nil),       // 21: core.ListConversationsResponse
+	(*GetConversationMessagesRequest)(nil),  // 22: core.GetConversationMessagesRequest
+	(*GetConversationMessagesResponse)(nil), // 23: core.GetConversationMessagesResponse
+	(*CreateUserMessageRequest)(nil),        // 24: core.CreateUserMessageRequest
+	(*CreateAssistantMessageRequest)(nil),   // 25: core.CreateAssistantMessageRequest
+	(*MessageResponse)(nil),                 // 26: core.MessageResponse
+	(*BuildChatContextRequest)(nil),         // 27: core.BuildChatContextRequest
+	(*BuildChatContextResponse)(nil),        // 28: core.BuildChatContextResponse
 }
 var file_core_proto_depIdxs = []int32{
 	1,  // 0: core.RegisterUserResponse.user:type_name -> core.User
 	1,  // 1: core.VerifyLoginResponse.user:type_name -> core.User
-	2,  // 2: core.AgentResponse.agent:type_name -> core.Agent
-	2,  // 3: core.ListAgentsResponse.list:type_name -> core.Agent
-	3,  // 4: core.ConversationResponse.conversation:type_name -> core.Conversation
-	3,  // 5: core.ListConversationsResponse.list:type_name -> core.Conversation
-	4,  // 6: core.GetConversationMessagesResponse.list:type_name -> core.Message
-	4,  // 7: core.MessageResponse.message:type_name -> core.Message
-	2,  // 8: core.BuildChatContextResponse.agent:type_name -> core.Agent
-	3,  // 9: core.BuildChatContextResponse.conversation:type_name -> core.Conversation
-	4,  // 10: core.BuildChatContextResponse.messages:type_name -> core.Message
-	5,  // 11: core.Core.RegisterUser:input_type -> core.RegisterUserRequest
-	7,  // 12: core.Core.VerifyLogin:input_type -> core.VerifyLoginRequest
-	9,  // 13: core.Core.CreateAgent:input_type -> core.CreateAgentRequest
-	10, // 14: core.Core.UpdateAgent:input_type -> core.UpdateAgentRequest
-	11, // 15: core.Core.DeleteAgent:input_type -> core.DeleteAgentRequest
-	12, // 16: core.Core.GetAgent:input_type -> core.GetAgentRequest
-	14, // 17: core.Core.ListAgents:input_type -> core.ListAgentsRequest
-	16, // 18: core.Core.CreateConversation:input_type -> core.CreateConversationRequest
-	18, // 19: core.Core.ListConversations:input_type -> core.ListConversationsRequest
-	20, // 20: core.Core.GetConversationMessages:input_type -> core.GetConversationMessagesRequest
-	22, // 21: core.Core.CreateUserMessage:input_type -> core.CreateUserMessageRequest
-	23, // 22: core.Core.CreateAssistantMessage:input_type -> core.CreateAssistantMessageRequest
-	25, // 23: core.Core.BuildChatContext:input_type -> core.BuildChatContextRequest
-	6,  // 24: core.Core.RegisterUser:output_type -> core.RegisterUserResponse
-	8,  // 25: core.Core.VerifyLogin:output_type -> core.VerifyLoginResponse
-	13, // 26: core.Core.CreateAgent:output_type -> core.AgentResponse
-	13, // 27: core.Core.UpdateAgent:output_type -> core.AgentResponse
-	0,  // 28: core.Core.DeleteAgent:output_type -> core.Empty
-	13, // 29: core.Core.GetAgent:output_type -> core.AgentResponse
-	15, // 30: core.Core.ListAgents:output_type -> core.ListAgentsResponse
-	17, // 31: core.Core.CreateConversation:output_type -> core.ConversationResponse
-	19, // 32: core.Core.ListConversations:output_type -> core.ListConversationsResponse
-	21, // 33: core.Core.GetConversationMessages:output_type -> core.GetConversationMessagesResponse
-	24, // 34: core.Core.CreateUserMessage:output_type -> core.MessageResponse
-	24, // 35: core.Core.CreateAssistantMessage:output_type -> core.MessageResponse
-	26, // 36: core.Core.BuildChatContext:output_type -> core.BuildChatContextResponse
-	24, // [24:37] is the sub-list for method output_type
-	11, // [11:24] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	1,  // 2: core.GetUserForAuthResponse.user:type_name -> core.User
+	2,  // 3: core.AgentResponse.agent:type_name -> core.Agent
+	2,  // 4: core.ListAgentsResponse.list:type_name -> core.Agent
+	3,  // 5: core.ConversationResponse.conversation:type_name -> core.Conversation
+	3,  // 6: core.ListConversationsResponse.list:type_name -> core.Conversation
+	4,  // 7: core.GetConversationMessagesResponse.list:type_name -> core.Message
+	4,  // 8: core.MessageResponse.message:type_name -> core.Message
+	2,  // 9: core.BuildChatContextResponse.agent:type_name -> core.Agent
+	3,  // 10: core.BuildChatContextResponse.conversation:type_name -> core.Conversation
+	4,  // 11: core.BuildChatContextResponse.messages:type_name -> core.Message
+	5,  // 12: core.Core.RegisterUser:input_type -> core.RegisterUserRequest
+	7,  // 13: core.Core.VerifyLogin:input_type -> core.VerifyLoginRequest
+	9,  // 14: core.Core.GetUserForAuth:input_type -> core.GetUserForAuthRequest
+	11, // 15: core.Core.CreateAgent:input_type -> core.CreateAgentRequest
+	12, // 16: core.Core.UpdateAgent:input_type -> core.UpdateAgentRequest
+	13, // 17: core.Core.DeleteAgent:input_type -> core.DeleteAgentRequest
+	14, // 18: core.Core.GetAgent:input_type -> core.GetAgentRequest
+	16, // 19: core.Core.ListAgents:input_type -> core.ListAgentsRequest
+	18, // 20: core.Core.CreateConversation:input_type -> core.CreateConversationRequest
+	20, // 21: core.Core.ListConversations:input_type -> core.ListConversationsRequest
+	22, // 22: core.Core.GetConversationMessages:input_type -> core.GetConversationMessagesRequest
+	24, // 23: core.Core.CreateUserMessage:input_type -> core.CreateUserMessageRequest
+	25, // 24: core.Core.CreateAssistantMessage:input_type -> core.CreateAssistantMessageRequest
+	27, // 25: core.Core.BuildChatContext:input_type -> core.BuildChatContextRequest
+	6,  // 26: core.Core.RegisterUser:output_type -> core.RegisterUserResponse
+	8,  // 27: core.Core.VerifyLogin:output_type -> core.VerifyLoginResponse
+	10, // 28: core.Core.GetUserForAuth:output_type -> core.GetUserForAuthResponse
+	15, // 29: core.Core.CreateAgent:output_type -> core.AgentResponse
+	15, // 30: core.Core.UpdateAgent:output_type -> core.AgentResponse
+	0,  // 31: core.Core.DeleteAgent:output_type -> core.Empty
+	15, // 32: core.Core.GetAgent:output_type -> core.AgentResponse
+	17, // 33: core.Core.ListAgents:output_type -> core.ListAgentsResponse
+	19, // 34: core.Core.CreateConversation:output_type -> core.ConversationResponse
+	21, // 35: core.Core.ListConversations:output_type -> core.ListConversationsResponse
+	23, // 36: core.Core.GetConversationMessages:output_type -> core.GetConversationMessagesResponse
+	26, // 37: core.Core.CreateUserMessage:output_type -> core.MessageResponse
+	26, // 38: core.Core.CreateAssistantMessage:output_type -> core.MessageResponse
+	28, // 39: core.Core.BuildChatContext:output_type -> core.BuildChatContextResponse
+	26, // [26:40] is the sub-list for method output_type
+	12, // [12:26] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_core_proto_init() }
@@ -2087,7 +2186,7 @@ func file_core_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_proto_rawDesc), len(file_core_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   27,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

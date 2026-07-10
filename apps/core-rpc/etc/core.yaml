@@ -1,12 +1,5 @@
 Name: core.rpc
+Mode: dev
 ListenOn: 0.0.0.0:8080
-Etcd:
-  Hosts:
-  - 127.0.0.1:2379
-  Key: agentforge.core.rpc
 MySQL:
-  DataSource: root:password@tcp(127.0.0.1:3306)/agentforge?charset=utf8mb4&parseTime=True&loc=Local
-Redis:
-  Addr: 127.0.0.1:6379
-  Password: ""
-  DB: 0
+  DataSource: root@tcp(127.0.0.1:3306)/agentforge?charset=utf8mb4&parseTime=True&loc=Local
